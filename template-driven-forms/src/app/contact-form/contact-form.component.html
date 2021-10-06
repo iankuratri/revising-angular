@@ -1,25 +1,27 @@
-<form>
-  <div class="mb-3">
-    <label for="firstName" class="form-label">First Name</label>
-    <input
-      type="input"
-      class="form-control"
-      id="firstName"
-      name="firstName"
-      required
-      minlength="3"
-      maxlength="10"
-      ngModel
-      #firstName="ngModel"
-    />
-    <div
-      class="alert alert-danger mt-3"
-      *ngIf="firstName.touched && firstName.invalid"
-    >
-      <div *ngIf="firstName.errors?.required">First Name is required.</div>
-      <div *ngIf="firstName.errors?.minlength">
-        First Name must be
-        {{ firstName.errors?.minlength?.requiredLength }} characters long.
+<form ngForm #f="ngForm" (ngSubmit)="submit(f)">
+  <div ngModelGroup="contact" #contact="ngModelGroup">
+    <div class="mb-3">
+      <label for="firstName" class="form-label">First Name</label>
+      <input
+        type="input"
+        class="form-control"
+        id="firstName"
+        name="firstName"
+        required
+        minlength="3"
+        maxlength="10"
+        ngModel
+        #firstName="ngModel"
+      />
+      <div
+        class="alert alert-danger mt-3"
+        *ngIf="firstName.touched && firstName.invalid"
+      >
+        <div *ngIf="firstName.errors?.required">First Name is required.</div>
+        <div *ngIf="firstName.errors?.minlength">
+          First Name must be
+          {{ firstName.errors?.minlength?.requiredLength }} characters long.
+        </div>
       </div>
     </div>
   </div>
