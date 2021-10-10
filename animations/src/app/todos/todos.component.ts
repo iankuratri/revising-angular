@@ -1,4 +1,10 @@
-import { animate, style, transition, trigger } from '@angular/animations';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,8 +13,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./todos.component.scss'],
   animations: [
     trigger('fade', [
-      transition('void => *', [style({ opacity: 0 }), animate(2000)]),
-      transition('* => void', [animate(2000, style({ opacity: 0 }))]),
+      state('void', style({ opacity: 0 })),
+      transition('void => *', [animate(2000)]),
+      transition('* => void', [animate(2000)]),
     ]),
   ],
 })
